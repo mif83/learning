@@ -4,7 +4,6 @@
 
 
 function calcCorner(str){
-    console.log("calcCorner");
     if (str.length == 0) return;
     var time = str.split(":"),
         minuteArrowCorner,
@@ -29,7 +28,6 @@ function showCorner(str){
     document.getElementById("result").innerHTML = "Результат = " + str + "&deg;";
 };
 function run(){
-    console.log("run");
     timeStr = document.getElementById("input-time").value;
     showCorner(calcCorner(timeStr));
 };
