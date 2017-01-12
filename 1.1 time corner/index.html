@@ -3,6 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #clok{
+            width: 345px;
+            height: 345px;
+            background: url(bg_clok.jpg) center no-repeat;
+            position: relative;
+        }
+        .arrow{
+            background: #000;
+            width: 2px;
+            position: absolute;
+            left:172.5px;
+            top:172.5px;
+            transform-origin: center 0 0;
+            visibility: hidden;
+        }
+        #hour{
+            background: rgb(249, 39, 41);
+            height: 70px;
+        }
+        #minute{
+            height: 130px;
+        }
+    </style>
 </head>
 <body>
     <h1>Считает угол между часовой и минутной стрелкой</h1>
@@ -11,6 +35,12 @@
     <br/>
     <br/>
     <div id="result">Результат</div>
+    <br>
+    <br><br><br>
+    <div id="clok">
+        <div id="minute" class="arrow"></div>
+        <div id="hour" class="arrow"></div>
+    </div>
     <script src="my.js"></script>
 </body>
 </html>
