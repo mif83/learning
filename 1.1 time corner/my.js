@@ -10,7 +10,7 @@ function calcCorner(str){
     if (str.length == 0) return;
     var time = str.split(":"),
         diffCorner;
-    if (time[0] > 24 || time[0] < 0 || time[1]>= 59 || time[1] < 0 ) return;
+    if (time[0] > 24 || time[0] < 0 || time[1]>= 60 || time[1] < 0 ) return;
     if (time[0] == 24){
         time[0] = 0;
     };
@@ -20,10 +20,10 @@ function calcCorner(str){
     //одна минута это 360/60 = 6 градусов
     angularObj.minuteArrowCorner = time[1]*6;
     // учитываем отклонение часовой стрелки, 5 делений минут между каждым часом
-    angularObj.hourArrowCorner = time[0]*6*5 + Math.round(time[1]*5/60);
+    angularObj.hourArrowCorner = time[0]*6*5 + Math.round(time[1]*5*6/60);
     diffCorner = Math.abs(angularObj.minuteArrowCorner - angularObj.hourArrowCorner);
 
-    return diffCorner > 180 ? Math.abs(360- diffCorner) : diffCorner ;
+    return diffCorner > 180 ? Math.abs(360 - diffCorner) : diffCorner ;
 };
 function showCorner(str){
     document.getElementById("result").innerHTML = "Результат = " + str + "&deg;";
@@ -37,6 +37,8 @@ function showClok(){
     minute.style.transform = "rotate("+ (180 + angularObj.minuteArrowCorner) +"deg)";
     hour.style.visibility = "visible";
     minute.style.visibility = "visible";
+    console.log(angularObj.hourArrowCorner);
+    console.log(angularObj.minuteArrowCorner);
 
 };
 function run(){
