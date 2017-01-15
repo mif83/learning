@@ -35,6 +35,7 @@ function drawCircle(){
 }
 
 // получаем координаты клика в элементе canvas
+
 function getCursorPosition(e) {
     var obj ={};
 
