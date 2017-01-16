@@ -59,4 +59,8 @@ function reset(){
     digit = getRandomInt(0, 100);
     clear();
 };
-
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max + 1);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
