@@ -52,19 +52,9 @@ body{
     }
 }
 .mercuriu-orbit {
-    animation:anim-mercuriu 3s linear infinite;
+    animation:anim-mercuriu 1s linear infinite;
 }
-@keyframes anim-mercuriu{
-    from {
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
-.mercuriu-orbit {
-    animation:anim-mercuriu 3s linear infinite;
-}
+
 /*venera*/
 .venera-orbit{
     width: 300px;
@@ -90,7 +80,7 @@ body{
     }
 }
 .venera-orbit {
-    animation:anim-venera 4s linear infinite;
+    animation:anim-venera 2.55s linear infinite;
 }
 /*earth*/
 .earth-orbit{
@@ -98,13 +88,15 @@ body{
     height: 360px;
     margin: -180px 0 0 -180px;
 }
+.earth-orbit .orb-in{
+    position: relative;
+    top:50%;
+    left: 0;
+}
 .earth-orbit img{
     width: 22px;
     height: 22px;
     margin: -11px 0 0 -11px;
-    position: relative;
-    top:50%;
-    left: 0;
     display: block;
 }
 
@@ -118,20 +110,41 @@ body{
 }
 
 .earth-orbit {
-    /*animation:anim-earth-orbit 5s linear infinite;*/
+    animation:anim-earth-orbit 4.15s linear infinite;
 }
 /*moon*/
-.moon-wrap{
-    position: relative;
-    width: 100px;
-    height: 100px;
+.earth-orbit .moon-orbit{
+    position: absolute;
+    margin:-21px 0 0 -21px;
+    width: 40px;
+    height: 40px;
+    left:0;
 }
-
+.moon-orbit img{
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    display: block;
+    position: relative;
+    top:50%;
+    left: 0;
+}
+@keyframes anim-moon-orbit{
+    from {
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.moon-orbit {
+    animation:anim-moon-orbit 0.31s linear infinite;
+}
 /*mars*/
 .mars-orbit{
-    width: 400px;
-    height: 400px;
-    margin: -200px 0 0 -200px;
+    width: 430px;
+    height: 430px;
+    margin: -215px 0 0 -215px;
 }
 .mars-orbit img{
     width: 16px;
@@ -152,7 +165,7 @@ body{
     }
 }
 .mars-orbit {
-    animation:anim-mars-orbit 5.8s linear infinite;
+    animation:anim-mars-orbit 7.8s linear infinite;
 }
 /*jupiter*/
 .jupiter-orbit{
@@ -179,7 +192,7 @@ body{
     }
 }
 .jupiter-orbit {
-    animation:anim-jupiter-orbit 6.5s linear infinite;
+    animation:anim-jupiter-orbit 49.24s linear infinite;
 }
 /*saturn*/
 .saturn-orbit{
@@ -210,7 +223,7 @@ body{
     }
 }
 .saturn-orbit {
-    animation:anim-saturn-orbit 7.5s linear infinite;
+    animation:anim-saturn-orbit 122.31s linear infinite;
 }
 /*uranus*/
 .uranus-orbit{
@@ -237,7 +250,7 @@ body{
     }
 }
 .uranus-orbit {
-    animation:anim-uranus-orbit 9.5s linear infinite;
+    animation:anim-uranus-orbit 348.85s linear infinite;
 }
 /*neptune*/
 .neptune-orbit{
@@ -264,7 +277,7 @@ body{
     }
 }
 .neptune-orbit {
-    animation:anim-neptune-orbit 11.5s linear infinite;
+    animation:anim-neptune-orbit 684s linear infinite;
 }
 /*pluton*/
 .pluto-orbit{
@@ -291,5 +304,5 @@ body{
     }
 }
 .pluto-orbit {
-    animation:anim-pluto-orbit 13s linear infinite;
+    animation:anim-pluto-orbit 1030s linear infinite;
 }
