@@ -3,58 +3,70 @@
  */
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
+    w = canvas.width,
+    h = canvas.height,
     count = 10,
-    arrCircles = [];
+    arrCircles = [],
+    opts = {
+        radius: 20,
+        defaultSpeed: 2
+    };
 
-
-
-
-
-canvas.addEventListener("click", getCircle);
-
-
+var Circle = function(objCoords){
+    this.x = objCoords.x;
+    this.y = objCoords.y;
+    this.speed = opts.defaultSpeed;
+    this.directionAngle = Math.floor(Math.random() * 360);
+    this.color = getRandomColor();
+    this.radius = opts.radius;
+    this.direction = {
+        x: Math.cos(this.directionAngle) * this.speed,
+        y: Math.sin(this.directionAngle) * this.speed
+    };
+    this.update = function(){
+        this.border();
+        this.x += this.direction.x;
+        this.y += this.direction.y;
+    };
+    this.border = function(){
+        if (this.x >= w - this.radius || this.x <= this.radius) {
+            this.color = getRandomColor();
+            this.direction.x *= -1;
+        }
+        if (this.y >= h - this.radius || this.y <= this.radius) {
+            this.color = getRandomColor();
+            this.direction.y *= -1;
+        }
+        if (this.x > w - this.radius) this.x = w - this.radius;
+        if (this.y > h - this.radius) this.y = h - this.radius;
+        if (this.x < this.radius) this.x = this.radius;
+        if (this.y < this.radius) this.y = this.radius;
+    };
+    this.draw = function(){
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    };
+};
+// отрисовка при кадре
+function loop(){
+    window.requestAnimationFrame(loop);
+    ctx.clearRect(0,0,w,h);
+    for (var i = 0; i < arrCircles.length; i++){
+        arrCircles[i].update();
+        arrCircles[i].draw();
+    }
+}
+// рисуем кружочек по клику
 function getCircle(e) {
     if (count <= 0 ) return; // можем рисовать столько окружностей сколько задано в count
-    arrCircles.push(getCursorPosition(e));
-    arrCircles[arrCircles.length-1].angle = generateAngle(); // генерим начальный угол движения
-    drawCircle();
+    arrCircles.push( new Circle( getCursorPosition(e) ) );
+    if ( count === 10) window.requestAnimationFrame(loop); // анимацию запускаем по первому клику чтобы небыло ускорения движения
     count--;
-    console.log(arrCircles);
-
-}
-function moveCircle(obj) {
-    canvas.width = canvas.width;
-
-}
-function tic(r){
-    var r = r || 2; //ставим по умолчанию отрезок в два пикселя на который мы передвинем круг
-    for (var i = 0; i < arrCircles.length; i++){
-        var newX = 2* Math.cos(arrCircles[i].angle),
-            newY = 2* Math.sin(arrCircles[i].angle);
-        if (!isCorectCoords(newX, newY)){
-            r = 1;
-        };
-        arrCircles[i].x = r* Math.cos(arrCircles[i].angle);
-        arrCircles[i].y = r* Math.sin(arrCircles[i].angle);
-    }
-}
-function isCorectCoords(x , y){
-    return !(x <= 0 || y <= 0 || x >= canvas.width || y >= canvas.height);
-}
-function generateAngle(){
-    return Math.floor(Math.random() * 361 );
-}
-function drawCircle(){
-    for (var i = 0; i < arrCircles.length; i++) {
-        ctx.beginPath();
-        ctx.arc(arrCircles[i].x, arrCircles[i].y, 30, 0, Math.PI * 2);
-        ctx.fillStyle = "#69cc27";
-        ctx.fill();
-    }
 }
 
 // получаем координаты клика в элементе canvas
-
 function getCursorPosition(e) {
     var obj ={};
 
@@ -72,3 +84,7 @@ function getCursorPosition(e) {
     obj.y -= canvas.offsetTop;
     return obj;
 }
+function getRandomColor(){
+    return "rgb("+ Math.floor(Math.random() * 235)+","+ Math.floor(Math.random() * 235) +","+ Math.floor(Math.random() * 235)+")";
+}
+canvas.addEventListener("click", getCircle);
