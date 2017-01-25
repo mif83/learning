@@ -23,7 +23,7 @@ var Circle = function(objCoords){
         x: Math.cos(this.directionAngle) * this.speed,
         y: Math.sin(this.directionAngle) * this.speed
     };
-    this.k = -0.2; // на 20% замедляем смотри changeSpeed()
+    this.k = -0.2; // на 20% замедляем смотри changeSpeed() , если его поставить положительным то вначале будет ускорение потом замедление
     this.changeSpeed = function(){
         if (Math.abs (this.direction.x) > 15 || Math.abs (this.direction.y) > 15) {
             this.k *= -1;

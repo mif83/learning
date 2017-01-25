@@ -226,13 +226,13 @@ body{
     animation:anim-mars-orbit 7.8s linear infinite;
 }
 @keyframes anim-mars-planet{
-     from {
-         transform: rotateZ(0deg) rotateX(-85deg);
-     }
-     to{
-         transform: rotateZ(-360deg) rotateX(-85deg);
-     }
- }
+    from {
+        transform: rotateZ(0deg) rotateX(-85deg);
+    }
+    to{
+        transform: rotateZ(-360deg) rotateX(-85deg);
+    }
+}
 .mars-orbit img {
     animation:anim-mars-planet 7.8s linear infinite;
 }
