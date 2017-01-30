@@ -119,7 +119,7 @@ function loop(){
 // рисуем кружочек по клику
 function getCircle(e) {
     if (count <= 0 ) return; // можем рисовать столько окружностей сколько задано в count
-    arrCircles.push( new Circle( getCursorPosition(e) ) );
+    arrCircles.push( new Circle( {x: e.offsetX, y: e.offsetY} ) );
     if ( count === 10) window.requestAnimationFrame(loop); // анимацию запускаем по первому клику чтобы небыло ускорения движения
     count--;
 }

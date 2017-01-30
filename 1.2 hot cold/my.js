@@ -22,7 +22,7 @@ function chekResult(userValue){
         str =  userValue + " холоднее";
     };
     last = Math.abs(userValue - digit);
-    try1--;
+    //try1--;
     return str;
 
 };
@@ -47,11 +47,14 @@ function run(){
     if (win){
         return;
     }
+    try1--;
+    if (try1 < 0 ) return;
     if ( try1 > 0){
         str = chekResult(value);
     } else {
-        str = "попытки закончились"
-        return;
+
+
+        str = "попытки закончились. Cлучайное число " + digit;
     };
     showResult(str);
 };
