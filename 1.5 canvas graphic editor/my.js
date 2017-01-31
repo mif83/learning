@@ -14,7 +14,8 @@ var canvas = document.getElementById("canvas"),
         lineColor :  "#000000",
         lineWidth: 1
     },
-    elems = ["color", "clear", "save", "line"];
+    elems = ["color", "clear", "save", "line", "restore"],
+    imgData;
 
 
 var ElemMenu = function(text){
@@ -64,8 +65,6 @@ function mouseDown(e){
         ctx.moveTo(e.offsetX, e.offsetY);
         document.documentElement.addEventListener("mousemove", mouseMove);
     }
-
-
 }
 function mouseUp(e){
     var obj = getCursorPosition(e);
@@ -75,21 +74,28 @@ function mouseUp(e){
                 if (menu[i].text == "clear") {
                     ctx.clearRect(0, 0, menu[0].xStart -9 , h);
                     menu[i].click = false;
-                }
+                };
                 if (menu[i].text == "color"){
                     document.getElementById("color").click();
                     menu[i].click = false;
-                }
+                };
                 if (menu[i].text == "line"){
                     line.lineWidth = parseInt(prompt("Введите толщину линий", 1));
                     menu[i].draw();
                     menu[i].click = false;
+                };
+                if (menu[i].text == "save"){
+                    imgData = ctx.getImageData(0,0, menu[0].xStart -9 , h );
+                    menu[i].click = false;
+                };
+                if (menu[i].text == "restore"){
+                    ctx.putImageData(imgData, 0,0);
+                    menu[i].click = false;
                 }
             }
     }
-    drawColor();;
+    drawColor();
     document.documentElement.removeEventListener("mousemove",mouseMove);
-
 }
 function mouseMove(e){
     if (e.offsetX >= menu[0].xStart -10) {
@@ -124,10 +130,11 @@ function drawColor(){
     ctx.fillStyle = line.lineColor;
     ctx.fillRect(menu[0].xEnd - 15, menu[0].yStart + 10, 10, 10);
 }
-document.getElementById("color").addEventListener("input", drawColor);
 
+document.getElementById("color").addEventListener("input", drawColor);
 document.documentElement.addEventListener("mouseup", mouseUp);
 document.documentElement.addEventListener("mousedown", mouseDown);
+
 for (var i = 0; i < elems.length; i++){
     menu.push(new ElemMenu(elems[i]));
 }
