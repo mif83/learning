@@ -89,7 +89,9 @@ function mouseUp(e){
                     menu[i].click = false;
                 };
                 if (menu[i].text == "restore"){
-                    ctx.putImageData(imgData, 0,0);
+                    if(imgData) {
+                        ctx.putImageData(imgData, 0,0);
+                    }
                     menu[i].click = false;
                 }
             }
