@@ -1,17 +1,29 @@
 html{
     width: 100%;
     height: 100%;
-    font-size:14px
+    font-size:14px;
 }
 body{
     width: 100%;
     height: 100%;
     background: url("../img/space.jpg") no-repeat center;
-    perspective: 900px;
-
 }
 .body-3d{
-    perspective: 900px;
+    perspective: 1200px;
+}
+.controls{
+    font-size:14px;
+    color:#ffffff;
+    position: absolute;
+    z-index: 1000;
+}
+.controls div{
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.controls input, .controls label{
+    cursor: pointer;
 }
 .system {
     width: 100%;
@@ -20,7 +32,7 @@ body{
 }
 .body-3d.system{
     transform-style: preserve-3d;
-    transform: rotateX(75deg);
+    transform: rotateX(83deg);
 }
 .orbit{
     border-radius: 50%;
@@ -46,7 +58,7 @@ body{
     background-size: cover;
 }
 .body-3d .planet{
-    transform: rotateX(-98deg);
+    transform: rotateX(-83deg);
 }
 .wrap-planet{
     position: absolute;
@@ -55,7 +67,6 @@ body{
     height: 3em;
     margin-left: -1.5em;
     margin-top: -1.5em;
-    /*border: solid 1px #fff;*/
     transform-style: preserve-3d;
 }
 @keyframes orbit {
@@ -94,20 +105,20 @@ body{
     position: absolute;
     top:50%;
     left:50%;
-    font-size:0.9rem;
-    width: 14em;
-    height: 14em;
-    margin: -7em 0 0 -7em;
+    font-size:1rem;
+    width: 11em;
+    height: 11em;
+    margin: -5.5em 0 0 -5.5em;
     background: url("../img/sun.png") center no-repeat;
     background-size: cover;
     z-index: 1;
 }
 .body-3d .sun{
-    transform: rotateX(-75deg);
+    transform: rotateX(-83deg);
 }
 /*mercuriy*/
 .mercuriu-orbit{
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     width: 24em;
     height: 24em;
     margin: -12em 0 0 -12em;
@@ -117,13 +128,13 @@ body{
     z-index: 2;
 }
 .mercuriu-orbit .planet{
-    font-size: 0.5rem;
+    font-size: 0.2rem;
     background-image: url("../img/mercuriu.jpg");
 }
-.body-3d .mercuriu-orbit .planet{
+.mercuriu-orbit .planet{
     animation: shadow 6s linear infinite;
 }
-.body-3d .mercuriu-orbit .wrap-planet{
+.mercuriu-orbit .wrap-planet{
     animation: wrap-back 6s linear infinite ;
 }
 /*venera*/
@@ -138,13 +149,13 @@ body{
     z-index: 3;
 }
 .venera-orbit .planet{
-    font-size: 0.7rem;
-    background-image: url("../img/venera.png");
+    font-size: 0.45rem;
+    background-image: url("../img/venus.png");
 }
-.body-3d .venera-orbit .planet{
+.venera-orbit .planet{
     animation: shadow 9s linear infinite;
 }
-.body-3d .venera-orbit .wrap-planet{
+.venera-orbit .wrap-planet{
     animation: wrap-back 9s linear infinite ;
 }
 /*earth*/
@@ -159,20 +170,20 @@ body{
     z-index: 4;
 }
 .earth-orbit .planet{
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     background-image: url("../img/earth.png");
 }
-.body-3d .earth-orbit .planet{
+.earth-orbit .planet{
     animation: shadow 12s linear infinite;
 }
-.body-3d .earth-orbit .wrap-planet{
+.earth-orbit .wrap-planet{
     animation: wrap-back 12s linear infinite ;
 }
 /*moon*/
 .moon-orbit{
-    width: 3em;
-    height: 3em;
-    margin: -1.5em 0 0 -1.5em;
+    width: 2em;
+    height: 2em;
+    margin: -1em 0 0 -1em;
     animation: orbit 2s linear infinite;
 }
 .orbit-on .moon-orbit{
@@ -182,14 +193,15 @@ body{
     z-index: 4;
 }
 .moon-orbit .planet{
-    width: 0.5em;
-    height: 0.5em;
-    margin-top: -0.25em;
-    margin-left: -0.25em;
+    width: 0.4em;
+    height: 0.4em;
+    margin-top: -0.2em;
+    margin-left: -0.2em;
     background-image: url("../img/moon2.png");
 }
-.body-3d .moon-orbit .wrap-planet{
-    animation: wrap-back 2s linear infinite ;
+.moon-orbit .wrap-planet {
+    animation: wrap-back 2s linear infinite;
+}
 /*mars*/
 .mars-orbit{
     font-size: 1.6rem;
@@ -202,12 +214,133 @@ body{
     z-index: 6;
 }
 .mars-orbit .planet{
-    font-size: 0.8rem;
+    font-size: 0.45rem;
     background-image: url("../img/mars.png");
 }
-.body-3d .mars-orbit .planet{
+.mars-orbit .planet{
     animation: shadow 15s linear infinite;
 }
-.body-3d .mars-orbit .wrap-planet{
+.mars-orbit .wrap-planet{
     animation: wrap-back 15s linear infinite ;
+}
+/*jupiter*/
+.jupiter-orbit{
+    font-size: 2.1rem;
+    width: 24em;
+    height: 24em;
+    margin: -12em 0 0 -12em;
+    animation: orbit 20s linear infinite;
+}
+.jupiter-orbit .wrap-planet{
+    z-index: 7;
+}
+.jupiter-orbit .planet{
+    font-size: 1.5rem;
+    background-image: url("../img/jupiter.png");
+}
+.jupiter-orbit .planet{
+    animation: shadow 20s linear infinite;
+}
+.jupiter-orbit .wrap-planet{
+    animation: wrap-back 20s linear infinite ;
+}
+/*saturn*/
+.saturn-orbit{
+    font-size: 2.5rem;
+    width: 24em;
+    height: 24em;
+    margin: -12em 0 0 -12em;
+    animation: orbit 30s linear infinite;
+}
+.saturn-orbit .wrap-planet{
+    z-index: 8;
+}
+.saturn-orbit .planet{
+    font-size: 1.3rem;
+    border-radius: 10% 62% 10% 85%;
+    background-image: url("../img/saturn.png");
+    background-size: contain;
+}
+.saturn-orbit .shadow-wheel{
+    width: 81%;
+    height: 81%;
+    margin-top: 6%;
+    margin-left: 14%;
+    border-radius: 50%;
+    animation: shadow 30s linear infinite;
+}
+.saturn-orbit .planet{
+    /*animation: shadow 30s linear infinite;*/
+}
+.saturn-orbit .wrap-planet{
+    animation: wrap-back 30s linear infinite ;
+}
+/*uran*/
+.uranus-orbit{
+    font-size: 3rem;
+    width: 24em;
+    height: 24em;
+    margin: -12em 0 0 -12em;
+    animation: orbit 40s linear infinite;
+}
+.uranus-orbit .wrap-planet{
+    z-index: 9;
+}
+.uranus-orbit .planet{
+    font-size: 0.9rem;
+    border-radius: 154% 25% 222% 18%;
+    background-image: url("../img/uranus.png");
+}
+.uranus-orbit .shadow-wheel{
+    width: 76%;
+    height: 76%;
+    margin-top: 6%;
+    margin-left: 10%;
+    border-radius: 50%;
+    animation: shadow 40s linear infinite;
+}
+.uranus-orbit .wrap-planet{
+    animation: wrap-back 40s linear infinite ;
+}
+/*neptune*/
+.neptune-orbit{
+    font-size: 3.3rem;
+    width: 24em;
+    height: 24em;
+    margin: -12em 0 0 -12em;
+    animation: orbit 60s linear infinite;
+}
+.neptune-orbit .wrap-planet{
+    z-index: 8;
+}
+.neptune-orbit .planet{
+    font-size: 0.8rem;
+    background-image: url("../img/neptune.png");
+}
+.neptune-orbit .planet{
+    animation: shadow 60s linear infinite;
+}
+.neptune-orbit .wrap-planet{
+    animation: wrap-back 60s linear infinite ;
+}
+/*pluton*/
+.pluto-orbit{
+    font-size: 3.8rem;
+    width: 24em;
+    height: 24em;
+    margin: -12em 0 0 -12em;
+    animation: orbit 100s linear infinite;
+}
+.pluto-orbit .wrap-planet{
+    z-index: 9;
+}
+.pluto-orbit .planet{
+    font-size: 0.3rem;
+    background-image: url("../img/pluto.png");
+}
+.pluto-orbit .planet{
+    animation: shadow 100s linear infinite;
+}
+.pluto-orbit .wrap-planet{
+    animation: wrap-back 100s linear infinite ;
 }
